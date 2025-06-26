@@ -1,0 +1,11 @@
+[package]
+name = "dpv"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ratatui = "0.26"  # 最新バージョンを使用（2025年6月時点で0.26.xが一般的）
+crossterm = "0.27" # ターミナル制御用
+image = "0.24"    # PNG画像の読み込みと処理用
+palette = "0.7"   # 256色への変換用
+anyhow = "1.0"    # エラーハンドリング簡略化
