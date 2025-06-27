@@ -32,26 +32,27 @@ fn main() -> Result<()> {
         .with_context(|| format!("Failed to decode image file: {}", image_path))?
         .to_rgba8();
     let (width, height) = img.dimensions();
+    let title = format!("Image: {}x{} pixels. File: {}. Press 'q' to quit", width, height, image_path);
 
     // メインループ
     loop {
         terminal.draw(|f| {
             let size = f.size();
             let block = Block::default()
-                .title("Image Display (4x4 Braille)")
+                .title(title.to_string())
                 .borders(Borders::ALL);
             let inner_area = block.inner(size);
             f.render_widget(block, size);
 
             // デバッグ情報
-            let debug_text = format!(
-                "Image: {}x{} pixels\nTerminal area: {}x{} cells\nPress 'q' to quit",
-                width, height, inner_area.width, inner_area.height
-            );
-            f.render_widget(
-                Paragraph::new(debug_text).block(Block::default().borders(Borders::ALL)),
-                Rect::new(inner_area.right().saturating_sub(20), inner_area.top(), 20, 5),
-            );
+            // let debug_text = format!(
+            //     "Image: {}x{} pixels\nTerminal area: {}x{} cells\nPress 'q' to quit",
+            //     width, height, inner_area.width, inner_area.height
+            // );
+            // f.render_widget(
+            //     Paragraph::new(debug_text).block(Block::default().borders(Borders::ALL)),
+            //     Rect::new(inner_area.right().saturating_sub(20), inner_area.top(), 20, 5),
+            // );
 
             // ターミナルサイズが小さすぎる場合の警告
             if inner_area.width < (width * 2) as u16 || inner_area.height < (height / 4) as u16 {
