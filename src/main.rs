@@ -5,7 +5,6 @@ use crossterm::{
     ExecutableCommand,
 };
 use image::{io::Reader as ImageReader, Rgba};
-use palette::Srgb;
 use ratatui::{
     backend::CrosstermBackend,
     prelude::*,
