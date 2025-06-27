@@ -40,7 +40,7 @@ fn main() -> Result<()> {
             let size = f.size();
             let block = Block::default()
                 .title(title.to_string())
-                .borders(Borders::ALL);
+                .borders(Borders::NONE);
             let inner_area = block.inner(size);
             f.render_widget(block, size);
 
